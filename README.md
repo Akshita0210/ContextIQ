@@ -147,7 +147,9 @@ CONTEXTIQ/
 │   └── vectordb/
 │       └── chroma_store.py             # ChromaDB operations
 
+```
 ---
+
 
 # ⚙️ Tech Stack
 
