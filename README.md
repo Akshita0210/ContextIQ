@@ -82,37 +82,70 @@ Management       │
 
 # 📂 Project Structure
 
-```
 CONTEXTIQ/
 │
-├── app.py
-├── admin.py
-├── requirements.txt
-├── README.md
-├── .env
+├── app.py                              # Main Streamlit application
+├── admin.py                            # Admin entry point
+├── requirements.txt                    # Project dependencies
+├── README.md                           # Project documentation
+├── .env                                # Environment variables
 │
 ├── data/
-│   ├── chat_history/
-│   ├── raw_docs/
-│   ├── vector_db/
-│   ├── users.json
-│   ├── knowledge_bases.json
-│   └── document_registry.json
+│   ├── chat_history/                   # Persistent user chat sessions
+│   ├── raw_docs/                       # Uploaded PDF documents organized by Knowledge Base
+│   ├── vector_db/                      # ChromaDB vector database
+│   ├── users.json                      # User credentials and roles
+│   ├── knowledge_bases.json            # Knowledge Base metadata
+│   └── document_registry.json          # Uploaded document registry
 │
 ├── src/
+│   │
 │   ├── assets/
+│   │   └── login_illustration.jpg      # Login page illustration
+│   │
 │   ├── auth/
+│   │   ├── auth_manager.py             # User authentication and authorization
+│   │   └── login.py                    # Login interface
+│   │
 │   ├── chains/
+│   │   └── rag_chain.py                # RAG pipeline orchestration
+│   │
 │   ├── ingestion/
+│   │   ├── embeddings.py               # Embedding generation
+│   │   ├── pdf_loader.py               # PDF loading and text extraction
+│   │   └── splitter.py                 # Semantic text chunking
+│   │
 │   ├── knowledge_base/
+│   │   ├── delete.py                   # Document deletion
+│   │   ├── duplicate.py                # Duplicate document detection
+│   │   ├── ingestion_manager.py        # End-to-end document ingestion
+│   │   ├── kb_manager.py               # Knowledge Base management
+│   │   ├── metadata.py                 # Metadata extraction
+│   │   └── registry.py                 # Document registry management
+│   │
 │   ├── llm/
+│   │   └── groq_client.py              # Groq LLM configuration
+│   │
 │   ├── memory/
+│   │   ├── chat_history.py             # Chat history management
+│   │   └── session_manager.py          # Session management
+│   │
 │   ├── prompts/
+│   │   └── prompts.py                  # System prompts
+│   │
 │   ├── retrieval/
+│   │   └── retriever.py                # ChromaDB retriever
+│   │
 │   ├── services/
+│   │   ├── admin_service.py            # Admin business logic
+│   │   └── rag_service.py              # Query processing service
+│   │
 │   ├── ui/
+│   │   ├── admin_dashboard.py          # Admin dashboard
+│   │   └── user_dashboard.py           # User dashboard
+│   │
 │   └── vectordb/
-```
+│       └── chroma_store.py             # ChromaDB operations
 
 ---
 

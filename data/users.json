@@ -1,1 +1,22 @@
-{}
+{
+    "admin": {
+        "password": "$2b$12$WKnuJRWmhC/na211tTJKh.KdURYJMGVSGPrHQ/wwodvTItJEnGMHK",
+        "role": "Admin",
+        "department": null
+    },
+    "Akshita": {
+        "password": "$2b$12$D4gBYL2b8raLEhzueJLcjOW5PKveqBQKcKoycUBvJ1fJZ.Z9rcYWm",
+        "role": "User",
+        "department": "HR"
+    },
+    "Diya": {
+        "password": "$2b$12$dPJH/13S/sFHOqkLwuvWLOJxTWNpsdqhqhTW7p457xgaKNq/imTfK",
+        "role": "User",
+        "department": "Finance"
+    },
+    "Sid": {
+        "password": "$2b$12$dOcJhRQ8UfDV3Tyg8WiIVO2qu5IBHqLF2YzuJzdyMYEhTftRqWFVG",
+        "role": "User",
+        "department": "IT"
+    }
+}

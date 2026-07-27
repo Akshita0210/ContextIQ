@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "id": "hr",
+        "name": "HR"
+    },
+    {
+        "id": "finance",
+        "name": "Finance"
+    },
+    {
+        "id": "it",
+        "name": "IT"
+    }
+]

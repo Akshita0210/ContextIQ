@@ -14,7 +14,7 @@ def load_registry():
 
     with open(REGISTRY_PATH, "r") as f:
         try:
-            return json.load(f)
+            return json.load(f)  # converts the JSON data from the file into a Python dictionary
         except json.JSONDecodeError:
             return {}
 

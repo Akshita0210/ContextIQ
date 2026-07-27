@@ -251,52 +251,93 @@ def display_chat_history(history):
 import re
 
 
-def filter_relevant_sources(answer, context, max_sources=2):
+# def filter_relevant_sources(answer, context, max_sources=2):
+#     """
+#     Filter retrieved documents and keep only the most relevant ones.
+#     """
+
+#     if not context:
+#         return []
+
+#     answer_lower = answer.lower()
+
+#     scored_docs = []
+
+#     for doc in context:
+
+#         text = doc.page_content.lower()
+
+#         # Split into sentences
+#         sentences = re.split(r"[.!?]\s+", text)
+
+#         score = 0
+
+#         for sentence in sentences:
+
+#             sentence = sentence.strip()
+
+#             if len(sentence) < 25:
+#                 continue
+
+#             if sentence in answer_lower:
+#                 score += 3
+
+#             else:
+#                 # Count overlapping keywords
+#                 overlap = sum(
+#                     1
+#                     for word in sentence.split()
+#                     if len(word) > 4 and word in answer_lower
+#                 )
+
+#                 score += overlap
+
+#         scored_docs.append((score, doc))
+
+#     scored_docs.sort(key=lambda x: x[0], reverse=True)
+
+#     return [doc for score, doc in scored_docs[:max_sources]]
+from difflib import SequenceMatcher
+
+
+def filter_relevant_sources(answer, context, max_sources=1):
     """
-    Filter retrieved documents and keep only the most relevant ones.
+    Return only the document that best matches the generated answer.
     """
 
     if not context:
         return []
 
-    answer_lower = answer.lower()
+    answer = answer.lower()
 
-    scored_docs = []
+    scored = []
 
     for doc in context:
 
-        text = doc.page_content.lower()
+        best_score = 0
 
-        # Split into sentences
-        sentences = re.split(r"[.!?]\s+", text)
-
-        score = 0
+        sentences = re.split(r"[.!?]\s+", doc.page_content)
 
         for sentence in sentences:
 
             sentence = sentence.strip()
 
-            if len(sentence) < 25:
+            if len(sentence) < 20:
                 continue
 
-            if sentence in answer_lower:
-                score += 3
+            similarity = SequenceMatcher(
+                None,
+                answer,
+                sentence.lower()
+            ).ratio()
 
-            else:
-                # Count overlapping keywords
-                overlap = sum(
-                    1
-                    for word in sentence.split()
-                    if len(word) > 4 and word in answer_lower
-                )
+            best_score = max(best_score, similarity)
 
-                score += overlap
+        scored.append((best_score, doc))
 
-        scored_docs.append((score, doc))
+    scored.sort(reverse=True, key=lambda x: x[0])
 
-    scored_docs.sort(key=lambda x: x[0], reverse=True)
-
-    return [doc for score, doc in scored_docs[:max_sources]]
+    return [scored[0][1]]
 def display_sources(context):
 
     if not context:
@@ -340,3 +381,4 @@ def display_sources(context):
             chips_html,
             unsafe_allow_html=True
         )
+

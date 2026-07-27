@@ -1,27 +1,3 @@
-# from turtle import st
-
-# from langchain_community.document_loaders import PyPDFLoader
-
-# def load_uploaded_pdfs(uploaded_files):
-
-#     documents = []
-
-#     for uploaded_file in uploaded_files:
-
-#         temp_pdf = f"./{uploaded_file.name}"
-
-#         with open(temp_pdf, "wb") as f:
-#             f.write(uploaded_file.getvalue())
-
-#         loader = PyPDFLoader(temp_pdf)
-
-#         docs = loader.load()
-
-#         documents.extend(docs)
-
-#     return documents
-
-
 ############### PHASE 3 ###############
 
 import os
